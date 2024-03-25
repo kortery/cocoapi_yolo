@@ -107,8 +107,8 @@ class COCO:
 
         if 'annotations' in self.dataset and 'categories' in self.dataset:
             for ann in self.dataset['annotations']:
-                catToImgs[ann['category_id']].append(ann['id'])
-                # catToImgs[ann['category_id']].append(ann['image_id'])
+                # catToImgs[ann['category_id']].append(ann['id'])
+                catToImgs[ann['category_id']].append(ann['image_id']) # original
 
         print('index created!')
 
@@ -313,7 +313,7 @@ class COCO:
         else:
             anns = resFile
         assert type(anns) == list, 'results in not an array of objects'
-        annsImgIds = [ann['id'] for ann in anns]
+        annsImgIds = [ann['image_id'] for ann in anns]
         print(f"set(annsImgIds): {set(annsImgIds)}")
         print(f"set(self.getImgIds()): {set(self.getImgIds())}")
         print(f"set(annsImgIds) & set(self.getImgIds()): {set(annsImgIds) & set(self.getImgIds())}")
