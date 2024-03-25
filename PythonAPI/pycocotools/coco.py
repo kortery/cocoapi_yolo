@@ -313,6 +313,13 @@ class COCO:
             anns = resFile
         assert type(anns) == list, 'results in not an array of objects'
         annsImgIds = [ann['image_id'] for ann in anns]
+        print(f"set(annsImgIds): {set(annsImgIds)}")
+        print(f"set(self.getImgIds()): {set(self.getImgIds())}")
+        print(f"set(annsImgIds) & set(self.getImgIds()): {set(annsImgIds) & set(self.getImgIds())}")
+        print("Length of both")
+        print()
+        print(f"len(set(self.getImgIds())): {len(set(self.getImgIds()))}")
+        print(f"len(set(annsImgIds) & set(self.getImgIds())): {len(set(annsImgIds) & set(self.getImgIds()))}")
         assert set(annsImgIds) == (set(annsImgIds) & set(self.getImgIds())), \
                'Results do not correspond to current coco set'
         if 'caption' in anns[0]:
