@@ -313,7 +313,7 @@ class COCO:
         else:
             anns = resFile
         assert type(anns) == list, 'results in not an array of objects'
-        annsImgIds = [ann['image_id'] for ann in anns]
+        annsImgIds = [ann['id'] for ann in anns]
         print(f"set(annsImgIds): {set(annsImgIds)}")
         print(f"set(self.getImgIds()): {set(self.getImgIds())}")
         print(f"set(annsImgIds) & set(self.getImgIds()): {set(annsImgIds) & set(self.getImgIds())}")
