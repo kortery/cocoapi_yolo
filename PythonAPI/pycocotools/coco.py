@@ -307,11 +307,16 @@ class COCO:
         print('Loading and preparing results...')
         tic = time.time()
         if type(resFile) == str or (PYTHON_VERSION == 2 and type(resFile) == unicode):
+            print("Executing... if type(resFile) == str or (PYTHON_VERSION == 2 and type(resFile) == unicode)")
             anns = json.load(open(resFile))
         elif type(resFile) == np.ndarray:
+            print("Executing... elif type(resFile) == np.ndarray")
             anns = self.loadNumpyAnnotations(resFile)
         else:
+            print("Else...")
             anns = resFile
+        print()
+        print(f"Anns: {anns}")
         assert type(anns) == list, 'results in not an array of objects'
         annsImgIds = [ann['image_id'] for ann in anns]
         print(f"set(annsImgIds): {set(annsImgIds)}")
