@@ -98,6 +98,7 @@ class COCOeval:
         else:
             gts=self.cocoGt.loadAnns(self.cocoGt.getAnnIds(imgIds=p.imgIds))
             dts=self.cocoDt.loadAnns(self.cocoDt.getAnnIds(imgIds=p.imgIds))
+        print("ImgIds", p.imgIds)
         print("COCOeval prepare gts: ", gts)
         print("COCOeval prepare dts: ", dts)
         # convert ground truth to mask if iouType == 'segm'
