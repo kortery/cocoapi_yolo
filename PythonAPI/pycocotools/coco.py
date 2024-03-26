@@ -155,7 +155,9 @@ class COCO:
             ids = [ann['id'] for ann in anns if ann['iscrowd'] == iscrowd]
         else:
             print(f"else ids: {[ann['id'] for ann in anns]}")
-            ids = [ann['id'] for ann in anns]
+            # ids = [ann['id'] for ann in anns]
+            print("anns: ", anns)
+            ids = [ann['image_id'] for ann in anns]
         return ids
 
     def getCatIds(self, catNms=[], supNms=[], catIds=[]):
