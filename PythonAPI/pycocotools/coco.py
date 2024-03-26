@@ -156,7 +156,7 @@ class COCO:
         else:
             print(f"else ids: {[ann['id'] for ann in anns]}")
             # ids = [ann['id'] for ann in anns]
-            print("anns: ", anns)
+            print("anns: ", anns[:10])
             ids = [ann['image_id'] for ann in anns]
         return ids
 
