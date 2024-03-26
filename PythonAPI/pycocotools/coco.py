@@ -351,7 +351,7 @@ class COCO:
         for id, ann in enumerate(anns):
             for key, value in ann.items():
                 if key == "image_id":
-                    ann[key] = value + img_ids_dict[value]
+                    ann[key] = value + img_ids_dict['.'.join(value.split('.')[:-1])]
         
         if 'caption' in anns[0]:
             print("if 'caption' in anns[0]:")
