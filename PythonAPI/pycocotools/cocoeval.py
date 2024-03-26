@@ -92,12 +92,15 @@ class COCOeval:
                 rle = coco.annToRLE(ann)
                 ann['segmentation'] = rle
         p = self.params
+
+        print("CocoEval prepare")
         if p.useCats:
             gts=self.cocoGt.loadAnns(self.cocoGt.getAnnIds(imgIds=p.imgIds, catIds=p.catIds))
             dts=self.cocoDt.loadAnns(self.cocoDt.getAnnIds(imgIds=p.imgIds, catIds=p.catIds))
         else:
             gts=self.cocoGt.loadAnns(self.cocoGt.getAnnIds(imgIds=p.imgIds))
             dts=self.cocoDt.loadAnns(self.cocoDt.getAnnIds(imgIds=p.imgIds))
+        
         print("ImgIds", p.imgIds)
         print("COCOeval prepare gts: ", gts)
         print("COCOeval prepare dts: ", dts)
