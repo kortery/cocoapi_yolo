@@ -206,6 +206,10 @@ class COCO:
         :return: anns (object array) : loaded ann objects
         """
         if _isArrayLike(ids):
+            print()
+            print("loadAnns")
+            print(f"loadAnns ids: {ids}")
+            print(f"loadAnns return: {[self.anns[id] for id in ids]}")
             return [self.anns[id] for id in ids]
         elif type(ids) == int:
             return [self.anns[ids]]
