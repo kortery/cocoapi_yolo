@@ -99,7 +99,7 @@ class COCO:
 
         if 'images' in self.dataset:
             for img in self.dataset['images']:
-                imgs[img['file_name'][-4:]] = img
+                imgs[img['file_name'][:-4]] = img
                 # imgs[img['id']] = img # original
 
         if 'categories' in self.dataset:
