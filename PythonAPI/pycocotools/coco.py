@@ -337,8 +337,9 @@ class COCO:
         print(f"sorted(set(self.getImgIds())): {sorted(set(self.getImgIds()))}")
         print(f"sorted(set(annsImgIds) & set(self.getImgIds())): {sorted(set(annsImgIds) & set(self.getImgIds()))}")
 
-        img_ids = [''.join(img_id.split('.')[:-1]) for img_id in self.getImgIds()]
-        annsImgIds = [''.join(anns_img_id.split('.')[:-1]) for anns_img_id in annsImgIds]
+        img_ids_dict = {'.'.join(img_id.split('.')[:-1]): '.'.join(img_id.split('.')[-1:])  for img_id in self.getImgIds()]
+        img_ids = ['.'.join(img_id.split('.')[:-1]) for img_id in self.getImgIds()]
+        annsImgIds = ['.'.join(anns_img_id.split('.')[:-1]) for anns_img_id in annsImgIds]
 
         print(f"sorted(set(img_ids)): {sorted(set(img_ids))}")
         print(f"sorted(set(annsImgIds)): {sorted(set(annsImgIds))}")
@@ -346,6 +347,11 @@ class COCO:
         #        'Results do not correspond to current coco set'
         assert set(annsImgIds) == (set(annsImgIds) & set(img_ids)), \
        'Results do not correspond to current coco set'
+
+        for key, value in anns.items():
+            if key == "image_id":
+                anns[key] = value + img_ids_dict[value]
+        
         if 'caption' in anns[0]:
             print("if 'caption' in anns[0]:")
             imgIds = set([img['id'] for img in res.dataset['images']]) & set([ann['image_id'] for ann in anns])
