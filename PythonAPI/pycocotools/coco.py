@@ -334,7 +334,7 @@ class COCO:
         print(f"sorted(set(self.getImgIds())): {sorted(set(self.getImgIds()))}")
         print(f"sorted(set(annsImgIds) & set(self.getImgIds())): {sorted(set(annsImgIds) & set(self.getImgIds()))}")
 
-        img_ids = [''.join(img_id.split()[:-1]) for img_id in self.getImgIds()]
+        img_ids = [''.join(img_id.split('.')[:-1]) for img_id in self.getImgIds()]
         annsImgIds = [''.join(anns_img_id.split('.')[:-1]) for anns_img_id in annsImgIds]
 
         print(f"sorted(set(img_ids)): {sorted(set(img_ids))}")
@@ -344,11 +344,13 @@ class COCO:
         assert set(annsImgIds) == (set(annsImgIds) & set(img_ids)), \
        'Results do not correspond to current coco set'
         if 'caption' in anns[0]:
+            print("if 'caption' in anns[0]:")
             imgIds = set([img['id'] for img in res.dataset['images']]) & set([ann['image_id'] for ann in anns])
             res.dataset['images'] = [img for img in res.dataset['images'] if img['id'] in imgIds]
             for id, ann in enumerate(anns):
                 ann['id'] = id+1
         elif 'bbox' in anns[0] and not anns[0]['bbox'] == []:
+            print("elif 'bbox' in anns[0] and not anns[0]['bbox'] == []:")
             res.dataset['categories'] = copy.deepcopy(self.dataset['categories'])
             for id, ann in enumerate(anns):
                 bb = ann['bbox']
@@ -359,6 +361,7 @@ class COCO:
                 ann['id'] = id+1
                 ann['iscrowd'] = 0
         elif 'segmentation' in anns[0]:
+            print("elif 'segmentation' in anns[0]:")
             res.dataset['categories'] = copy.deepcopy(self.dataset['categories'])
             for id, ann in enumerate(anns):
                 # now only support compressed RLE format as segmentation results
@@ -368,6 +371,7 @@ class COCO:
                 ann['id'] = id+1
                 ann['iscrowd'] = 0
         elif 'keypoints' in anns[0]:
+            print("elif 'keypoints' in anns[0]:")
             res.dataset['categories'] = copy.deepcopy(self.dataset['categories'])
             for id, ann in enumerate(anns):
                 s = ann['keypoints']
