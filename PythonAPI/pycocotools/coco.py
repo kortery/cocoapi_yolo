@@ -151,8 +151,10 @@ class COCO:
             anns = anns if len(catIds)  == 0 else [ann for ann in anns if ann['category_id'] in catIds]
             anns = anns if len(areaRng) == 0 else [ann for ann in anns if ann['area'] > areaRng[0] and ann['area'] < areaRng[1]]
         if not iscrowd == None:
+            print(f"not iscrowd == None: {[ann['id'] for ann in anns if ann['iscrowd'] == iscrowd]}")
             ids = [ann['id'] for ann in anns if ann['iscrowd'] == iscrowd]
         else:
+            print(f"else ids: {[ann['id'] for ann in anns]}")
             ids = [ann['id'] for ann in anns]
         return ids
 
