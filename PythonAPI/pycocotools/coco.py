@@ -327,26 +327,26 @@ class COCO:
         print(f"Anns: {anns}")
         assert type(anns) == list, 'results in not an array of objects'
         annsImgIds = [ann['image_id'] for ann in anns]
-        print(f"set(annsImgIds): {set(annsImgIds)}")
-        print(f"set(self.getImgIds()): {set(self.getImgIds())}")
-        print(f"set(annsImgIds) & set(self.getImgIds()): {set(annsImgIds) & set(self.getImgIds())}")
-        print("Length of both")
-        print()
-        # print(f"len(set(annsImgIds)): {len(set(annsImgIds))}")
-        # print(f"len(set(self.getImgIds())): {len(set(self.getImgIds()))}")
-        # print(f"len(set(annsImgIds) & set(self.getImgIds())): {len(set(annsImgIds) & set(self.getImgIds()))}")
+        # print(f"set(annsImgIds): {set(annsImgIds)}")
+        # print(f"set(self.getImgIds()): {set(self.getImgIds())}")
+        # print(f"set(annsImgIds) & set(self.getImgIds()): {set(annsImgIds) & set(self.getImgIds())}")
+        # print("Length of both")
         # print()
-        print("Sorted")
-        print(f"sorted(set(annsImgIds)): {sorted(set(annsImgIds))}")
-        print(f"sorted(set(self.getImgIds())): {sorted(set(self.getImgIds()))}")
-        print(f"sorted(set(annsImgIds) & set(self.getImgIds())): {sorted(set(annsImgIds) & set(self.getImgIds()))}")
+        # # print(f"len(set(annsImgIds)): {len(set(annsImgIds))}")
+        # # print(f"len(set(self.getImgIds())): {len(set(self.getImgIds()))}")
+        # # print(f"len(set(annsImgIds) & set(self.getImgIds())): {len(set(annsImgIds) & set(self.getImgIds()))}")
+        # # print()
+        # print("Sorted")
+        # print(f"sorted(set(annsImgIds)): {sorted(set(annsImgIds))}")
+        # print(f"sorted(set(self.getImgIds())): {sorted(set(self.getImgIds()))}")
+        # print(f"sorted(set(annsImgIds) & set(self.getImgIds())): {sorted(set(annsImgIds) & set(self.getImgIds()))}")
 
         img_ids_dict = {'.'.join(img_id.split('.')[:-1]): '.'.join(img_id.split('.')[-1:])  for img_id in self.getImgIds()}
         img_ids = ['.'.join(img_id.split('.')[:-1]) for img_id in self.getImgIds()]
         annsImgIds = ['.'.join(anns_img_id.split('.')[:-1]) for anns_img_id in annsImgIds]
 
-        print(f"sorted(set(img_ids)): {sorted(set(img_ids))}")
-        print(f"sorted(set(annsImgIds)): {sorted(set(annsImgIds))}")
+        print(f"sorted(set(img_ids)): {sorted(set(img_ids))[:10]}")
+        print(f"sorted(set(annsImgIds)): {sorted(set(annsImgIds))[:10]}")
         # assert set(annsImgIds) == (set(annsImgIds) & set(self.getImgIds())), \
         #        'Results do not correspond to current coco set'
         assert set(annsImgIds) == (set(annsImgIds) & set(img_ids)), \
