@@ -348,9 +348,10 @@ class COCO:
         assert set(annsImgIds) == (set(annsImgIds) & set(img_ids)), \
        'Results do not correspond to current coco set'
 
-        for key, value in anns.items():
-            if key == "image_id":
-                anns[key] = value + img_ids_dict[value]
+        for id, ann in enumerate(anns)
+            for key, value in ann.items():
+                if key == "image_id":
+                    ann[key] = value + img_ids_dict[value]
         
         if 'caption' in anns[0]:
             print("if 'caption' in anns[0]:")
