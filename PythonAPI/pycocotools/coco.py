@@ -335,7 +335,7 @@ class COCO:
         print(f"sorted(set(annsImgIds) & set(self.getImgIds())): {sorted(set(annsImgIds) & set(self.getImgIds()))}")
 
         img_ids = [''.join(img_id.split()[:-1]) for img_id in self.getImgIds()]
-        annsImgIds = [''.join(anns_img_id.split()[:-1]) for anns_img_id in annsImgIds]
+        annsImgIds = [''.join(anns_img_id.split('.')[:-1]) for anns_img_id in annsImgIds]
 
         print(f"sorted(set(img_ids)): {sorted(set(img_ids))}")
         print(f"sorted(set(annsImgIds)): {sorted(set(annsImgIds))}")
