@@ -306,7 +306,7 @@ class COCO:
         res.dataset['images'] = [img for img in self.dataset['images']]
 
         print("self.dataset['images']", self.dataset['images'])
-        print("sorted(res.dataset['images'])", sorted(res.dataset['images']))
+        # print("sorted(res.dataset['images'])", sorted(res.dataset['images']))
 
         print('Loading and preparing results...')
         tic = time.time()
