@@ -325,8 +325,14 @@ class COCO:
         print(f"set(annsImgIds) & set(self.getImgIds()): {set(annsImgIds) & set(self.getImgIds())}")
         print("Length of both")
         print()
+        print(f"len(set(annsImgIds)): {len(set(annsImgIds))}")
         print(f"len(set(self.getImgIds())): {len(set(self.getImgIds()))}")
         print(f"len(set(annsImgIds) & set(self.getImgIds())): {len(set(annsImgIds) & set(self.getImgIds()))}")
+        print()
+        print("Sorted")
+        print(f"sorted(set(annsImgIds)): {sorted(set(annsImgIds))}")
+        print(f"sorted(set(self.getImgIds())): {sorted(set(self.getImgIds()))}")
+        print(f"sorted(set(annsImgIds) & set(self.getImgIds())): {sorted(set(annsImgIds) & set(self.getImgIds()))}")
         assert set(annsImgIds) == (set(annsImgIds) & set(self.getImgIds())), \
                'Results do not correspond to current coco set'
         if 'caption' in anns[0]:
