@@ -96,12 +96,12 @@ class COCOeval:
         print("CocoEval prepare")
         if p.useCats:
             print("if p.useCats")
-            print("imgIds=p.imgIds, catIds=p.catIds: {imgIds=p.imgIds[:10]} {catIds=p.catIds}")
+            print(f"imgIds=p.imgIds, catIds=p.catIds: {imgIds=p.imgIds[:10]} {catIds=p.catIds}")
             gts=self.cocoGt.loadAnns(self.cocoGt.getAnnIds(imgIds=p.imgIds, catIds=p.catIds))
             dts=self.cocoDt.loadAnns(self.cocoDt.getAnnIds(imgIds=p.imgIds, catIds=p.catIds))
         else:
             print("else")
-            print("imgIds=p.imgIds: ", p.imgIds)
+            print(f"imgIds=p.imgIds: ", p.imgIds)
             gts=self.cocoGt.loadAnns(self.cocoGt.getAnnIds(imgIds=p.imgIds))
             dts=self.cocoDt.loadAnns(self.cocoDt.getAnnIds(imgIds=p.imgIds))
         
